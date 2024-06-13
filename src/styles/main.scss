@@ -1,0 +1,48 @@
+@import './global_styles';
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: $very-light-grey;
+  box-sizing: border-box;
+  color: $grey;
+  display: flex;
+  font-family: 'Roboto-regular', sans-serif;
+  font-size: 1.6em;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+#root {
+  display: grid;
+  grid-template-areas:
+  "header"
+  "main";
+  
+  @include breakpoint(mobile) {
+    //grid-template-rows: 1fr 1fr;
+    width: 100%;
+  }
+  
+  @include breakpoint(desktop) {
+    grid-template-columns: 350px 1fr;
+    width: 100%;
+  }
+}
+
+main {
+  grid-area: "main";
+  @include breakpoint(mobile) {
+    padding: 0 20px;
+  }
+  
+  @include breakpoint(desktop) {
+    padding: 0 50px 68px 50px;
+  }
+}
+

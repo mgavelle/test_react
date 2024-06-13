@@ -1,0 +1,162 @@
+/* Header.scss */
+@import './global_styles';
+
+$menu-icon-width: 3em;
+$menu-icon-height: $menu-icon-width * 0.75;
+$menu-icon-color: $white;
+$menu-icon-color--active: $very-light-grey;
+
+.menu-icon {
+  position: relative;
+  width: $menu-icon-width;
+  height: $menu-icon-height;
+  @include breakpoint(mobile) {
+    display: inline-block;
+    margin-right: 20px;
+  }
+
+  @include breakpoint(desktop) {
+    display: none;
+  }
+}
+
+.menu-icon span {
+  position: absolute;
+  height: $menu-icon-width / 16;
+  width: 100%;
+  background-color: $menu-icon-color;
+  transition: all 250ms ease-in-out;
+  transform: rotate(0deg);
+  box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+.menu-icon span:nth-child(1) {
+  top: $menu-icon-width / 32;
+}
+
+.menu-icon span:nth-child(2),
+.menu-icon span:nth-child(3) {
+  top: $menu-icon-width / 3.2;
+}
+
+.menu-icon span:nth-child(4) {
+  top: $menu-icon-width * 0.625;
+}
+
+.menu-button:hover span,
+.menu-button:focus span,
+.menu-button:active span {
+  background: $menu-icon-color--active;
+}
+
+.menu-icon.is-active span:nth-child(1),
+.menu-icon.is-active span:nth-child(4) {
+  opacity: 0;
+}
+
+.menu-icon.is-active span:nth-child(2) {
+  transform: rotate(45deg);
+}
+
+.menu-icon.is-active span:nth-child(3) {
+  top: $menu-icon-width / 3.2;
+  transform: rotate(-45deg);
+}
+
+.header {
+  background-color: $purple;
+  color: $white;
+  grid-area: "header";
+  
+  @include breakpoint(mobile) {
+    padding: 20px;
+    position: relative;
+    width: 100%;
+  }
+  
+  @include breakpoint(desktop) {
+    padding: 58px 20px 20px 50px;
+    height: 100vh;
+    width: calc(100% - 70px);
+  }
+
+  .logo {
+   
+    @include breakpoint(mobile) {
+      margin: 10px;
+    }
+  
+    @include breakpoint(desktop) {
+      margin: 0 auto 116px auto;
+    }
+  }
+
+  .header-content {
+    display: flex;
+    margin: 0 auto;
+    padding: 0 1rem;
+    
+    @include breakpoint(mobile) {
+      justify-content: space-between;
+      flex-direction: row;
+    }
+  
+    @include breakpoint(desktop) {
+      flex-direction: column;
+    }
+  }
+
+  .nav {
+    @include breakpoint(mobile) {
+      background-color: $purple;
+      display: none;
+      padding: 20px;
+      position: absolute;
+      right: 0;
+      top: 70px;
+
+      &.open {
+        display: block;
+      }
+    }
+  
+    @include breakpoint(desktop) {
+      display: block;
+      position: inherit;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+
+      li {
+        font: normal normal bold 16px/21px Roboto-regular;
+        margin: 16px 0 17px 0;
+
+        &.selected {
+          list-style: disc;
+          list-style-position: inside;
+        }
+
+        a {
+          color: $white;
+          text-decoration: none;
+
+          &:hover {
+            color: $very-light-grey;
+          }
+        }
+      }
+
+      &.logout {
+        margin-top: 35px;
+        padding-top: 33px;
+        border-top: 1px solid $white;
+      }
+    }
+    
+  }
+}
